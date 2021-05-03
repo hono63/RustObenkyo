@@ -9,6 +9,7 @@ fn main() {
     loop_statement();
     iteration();
     person_class();
+    //panic!("pankuru.")
 }
 
 
