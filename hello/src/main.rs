@@ -6,6 +6,8 @@ fn main() {
     vector_for();
     box_test();
     print_okerr(if_statement(0));
+    loop_statement();
+    iteration();
 }
 
 
@@ -57,4 +59,40 @@ fn print_okerr(ret: Result<i32, String>) {
         Ok(okkee) => println!("ok:{}", okkee),
         Err(eraa) => println!("error:{}", eraa),
     };
+}
+
+fn loop_statement() {
+    let mut count = 0;
+    'sample_loop: loop {
+        println!{"count:{}", count}
+        count += 1;
+        if count >= 10 {
+            break 'sample_loop;
+        }
+    }
+}
+
+fn iteration() {
+    let it = Iter {
+        cur: 0,
+        max: 10,
+    };
+    for i in it {
+        println!("it:{}", i);
+    }
+}
+struct Iter {
+    cur: i32,
+    max: i32,
+}
+impl Iterator for Iter {
+    type Item = i32; // himozuke
+    fn next(&mut self) -> Option<i32> {
+        self.cur += 1;
+        if self.cur - 1 < self.max {
+            Some(self.cur -1)
+        } else {
+            None
+        }
+    }
 }
