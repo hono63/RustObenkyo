@@ -8,6 +8,7 @@ fn main() {
     print_okerr(if_statement(0));
     loop_statement();
     iteration();
+    person_class();
 }
 
 
@@ -94,5 +95,23 @@ impl Iterator for Iter {
         } else {
             None
         }
+    }
+}
+
+fn person_class() {
+    let p = Person::new("Taro", 10);
+    p.say_name().say_name();
+}
+struct Person {
+    name: String,
+    age: u32,
+}
+impl Person {
+    fn new(n: &str, a: u32) -> Person { // associated function
+        Person {name: n.to_string(), age: a}
+    }
+    fn say_name(&self) -> &Self {
+        println!("I am {}, {} yers old.", self.name, self.age);
+        self
     }
 }
