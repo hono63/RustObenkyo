@@ -5,6 +5,7 @@ fn main() {
     matching();
     vector_for();
     box_test();
+    print_okerr(if_statement(0));
 }
 
 
@@ -39,4 +40,21 @@ fn box_test() {
 // pointer to be set
 fn print_box(a: Box<[u8]>) {
     println!{"{:?}", a};
+}
+
+fn if_statement(num: i32) -> Result<i32, String> {
+    if num <= 0 {
+        Err("under 0.".to_string())
+    } else if num < 10 {
+        Ok(0)
+    } else {
+        Err("beyond 10.".to_string())
+    }
+}
+
+fn print_okerr(ret: Result<i32, String>) {
+    match ret {
+        Ok(okkee) => println!("ok:{}", okkee),
+        Err(eraa) => println!("error:{}", eraa),
+    };
 }
