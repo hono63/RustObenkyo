@@ -4,7 +4,9 @@ fn main() {
     print_str("Hello str, String.");
     matching();
     vector_for();
+    box_test();
 }
+
 
 fn print_str(s0: &str) {
     let s1: String = String::from(s0);
@@ -28,4 +30,13 @@ fn vector_for() {
     for elem in &v {
         println!("v:{}", elem);
     }
+}
+
+fn box_test() {
+    let array = [b'h', b'e', b'l', b'o'];
+    print_box(Box::new(array)); // allocated in heap memory
+}
+// pointer to be set
+fn print_box(a: Box<[u8]>) {
+    println!{"{:?}", a};
 }
